@@ -1084,45 +1084,6 @@ body{
 
 </div>
 
-                    <div class="paper-top">
-                        <span>✨ A Special Message ✨</span>
-                    </div>
-
-                    <h2>Dear Sai,</h2>
-
-                    <p>
-                        Happy Birthday, my dear friend!
-                    </p>
-
-                    <p>
-                        I made this special little website
-                        just for you, Sai. It's just a small
-                        thing I wanted to do for my dear friend.
-                        I hope you enjoy every little surprise
-                        in it.
-                    </p>
-
-                    <p>
-                        There are many more gifts waiting for you,
-                        Sai. They'll come to you at the right time,
-                        one by one.
-                    </p>
-
-                    <p>
-                        Thinking about you and making this for you
-                        has made me really happy, Sai. I hope this
-                        little surprise brings a beautiful smile
-                        to your face. ❤️
-                    </p>
-
-                    <div class="signature">
-                        With lots of love ❤️
-                    </div>
-
-                </div>
-
-            </div>
-
             <div class="envelope-front"></div>
 
             <div class="envelope-flap"></div>
@@ -1376,12 +1337,18 @@ function openLetter(){
     const button =
         document.getElementById("letterContinue");
 
+    /* Prevent double tapping */
+
+    if(envelope.classList.contains("open")){
+        return;
+    }
+
     /* Open envelope */
 
     envelope.classList.add("open");
 
 
-    /* Letter starts revealing */
+    /* Start letter reveal */
 
     setTimeout(()=>{
 
@@ -1396,20 +1363,20 @@ function openLetter(){
 
                 item.classList.add("revealed");
 
-            }, index * 650);
+            }, index * 850);
 
         });
 
     },1500);
 
 
-    /* Continue button appears */
+    /* Show continue after message */
 
     setTimeout(()=>{
 
         button.classList.add("show");
 
-    },6500);
+    },8500);
 }
 </script>
 
@@ -1659,9 +1626,9 @@ function openLetter(){
     left:18px;
     right:18px;
 
-    bottom:15px;
+    bottom:10px;
 
-    height:165px;
+    height:145px;
 
     overflow:hidden;
 
