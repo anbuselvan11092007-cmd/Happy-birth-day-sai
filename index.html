@@ -225,60 +225,33 @@ body{
 }
 
 /* =========================
-   NEW PREMIUM HEART ❤️
+   SIMPLE PREMIUM HEART
 ========================= */
 
 .heart{
-
     position:absolute;
 
     left:50%;
     top:52%;
 
-    width:125px;
-    height:125px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffb6cc 0%,
-            #ff6b96 25%,
-            #f51d5b 55%,
-            #a90038 100%
-        );
+    width:120px;
+    height:120px;
 
     transform:
         translate(-50%,-50%)
         rotate(-45deg);
 
-    border-radius:
-        18px 0 18px 18px;
+    background:#ff2f6d;
+
+    border-radius:12px;
 
     box-shadow:
-
-        inset 8px 8px 15px
-        rgba(255,255,255,.38),
-
-        inset -12px -14px 18px
-        rgba(80,0,30,.45),
-
-        0 10px 25px
-        rgba(0,0,0,.45),
-
-        0 0 25px
-        rgba(255,40,110,.9),
-
-        0 0 65px
-        rgba(255,40,110,.5);
+        0 0 25px rgba(255,40,110,.9),
+        0 0 60px rgba(255,40,110,.45);
 
     animation:
-        premiumHeartbeat 2.2s ease-in-out infinite;
-
-    z-index:5;
+        heartFloat 3s ease-in-out infinite;
 }
-
-
-/* Heart top curves */
 
 .heart::before,
 .heart::after{
@@ -287,38 +260,22 @@ body{
 
     position:absolute;
 
-    width:125px;
-    height:125px;
+    width:120px;
+    height:120px;
+
+    background:#ff2f6d;
 
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffb6cc 0%,
-            #ff6b96 25%,
-            #f51d5b 55%,
-            #a90038 100%
-        );
-
-    box-shadow:
-        inset 7px 7px 14px
-        rgba(255,255,255,.25),
-
-        inset -10px -12px 16px
-        rgba(80,0,30,.35);
 }
 
 .heart::before{
-
-    top:-62px;
+    top:-60px;
     left:0;
 }
 
 .heart::after{
-
     top:0;
-    left:62px;
+    left:60px;
 }
 
 
