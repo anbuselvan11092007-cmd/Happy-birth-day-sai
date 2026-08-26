@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Sai Dharshini ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Georgia,serif;
+    background:#050005;
+    color:white;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.opening{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(
+        circle at 50% 42%,
+        #7d173f 0%,
+        #3d0a25 32%,
+        #16000e 65%,
+        #030002 100%
+    );
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.opening::before{
+    content:"";
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,40,120,.28),
+        transparent 70%
+    );
+
+    filter:blur(25px);
+
+    animation:
+        ambientGlow 4s ease-in-out infinite;
+}
+
+@keyframes ambientGlow{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 8px white;
+
+    animation:
+        starFloat 5s linear infinite;
+}
+
+@keyframes starFloat{
+
+    0%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    80%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-20vh);
+        opacity:0;
+    }
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    position:relative;
+    z-index:10;
+
+    width:100%;
+
+    text-align:center;
+}
+
+/* =========================
+   HEART ZONE
+========================= */
+
+.heart-zone{
+
+    position:relative;
+
+    width:310px;
+    height:300px;
+
+    margin:auto;
+
+    cursor:pointer;
+
+    transition:
+        transform .8s ease,
+        opacity .8s ease;
+}
+
+/* =========================
+   HEART GLOW
+========================= */
+
+.heart-glow{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:240px;
+    height:240px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,35,105,.55),
+        rgba(255,35,105,.18) 40%,
+        transparent 72%
+    );
+
+    filter:blur(20px);
+
+    animation:
+        glowBreath 2.2s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes glowBreath{
+
+    0%,100%{
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+
+        opacity:.55;
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
+        opacity:1;
+    }
+}
+
+/* =========================
+   PREMIUM HEART
+========================= */
+
+.heart{
+
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    width:135px;
+    height:135px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-45deg);
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #ffb8c9 0%,
+        #ff5b86 18%,
+        #f31555 45%,
+        #bd003b 70%,
+        #64001f 100%
+    );
+
+    box-shadow:
+
+        inset 10px 10px 20px
+        rgba(255,255,255,.28),
+
+        inset -15px -20px 25px
+        rgba(65,0,25,.5),
+
+        0 15px 25px
+        rgba(0,0,0,.45),
+
+        0 0 30px
+        rgba(255,30,100,.9),
+
+        0 0 70px
+        rgba(255,30,100,.45);
+
+    animation:
+        heartFloat 3s ease-in-out infinite;
+
+    transform-style:preserve-3d;
+}
+
+.heart::before,
+.heart::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:135px;
+    height:135px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        145deg,
+        #ffb8c9 0%,
+        #ff5b86 20%,
+        #f31555 48%,
+        #bd003b 75%,
+        #64001f 100%
+    );
+
+    box-shadow:
+
+        inset 8px 8px 16px
+        rgba(255,255,255,.2),
+
+        inset -12px -15px 22px
+        rgba(65,0,25,.4);
+}
+
+.heart::before{
+    top:-67px;
+    left:0;
+}
+
+.heart::after{
+    top:0;
+    left:67px;
+}
+
+@keyframes heartFloat{
+
+    0%,100%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translate(-50%,-57%)
+            rotate(-45deg)
+            scale(1.07);
+
+    }
+}
+
+/* =========================
+   HEART HIGHLIGHT
+========================= */
+
+.heart-shine{
+
+    position:absolute;
+
+    left:39%;
+    top:24%;
+
+    width:35px;
+    height:72px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        160deg,
+        rgba(255,255,255,.85),
+        rgba(255,255,255,.08)
+    );
+
+    transform:
+        rotate(45deg);
+
+    filter:blur(2px);
+
+    z-index:8;
+
+    pointer-events:none;
+
+    animation:
+        shineMove 3s ease-in-out infinite;
+}
+
+@keyframes shineMove{
+
+    0%,100%{
+        opacity:.45;
+    }
+
+    50%{
+        opacity:.95;
+    }
+}
+
+/* =========================
+   ARROW
+========================= */
+
+.arrow{
+
+    position:absolute;
+
+    left:-70px;
+    top:105px;
+
+    z-index:20;
+
+    font-size:70px;
+
+    transform:rotate(-8deg);
+
+    filter:
+        drop-shadow(0 0 5px white)
+        drop-shadow(0 0 18px #ff3f91);
+
+    animation:
+        arrowShoot 2.8s ease-in-out infinite;
+}
+
+@keyframes arrowShoot{
+
+    0%{
+        left:-90px;
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    52%{
+        left:85px;
+    }
+
+    58%{
+        transform:
+            rotate(-8deg)
+            scale(1.25);
+    }
+
+    66%{
+        transform:
+            rotate(-8deg)
+            scale(1);
+    }
+
+    100%{
+        left:85px;
+        opacity:0;
+    }
+}
+
+/* =========================
+   TOUCH RINGS
+========================= */
+
+.touch-ring{
+
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    width:210px;
+    height:210px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(255,180,210,.35);
+
+    border-radius:50%;
+
+    animation:
+        ringPulse 2.4s ease-out infinite;
+}
+
+@keyframes ringPulse{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            scale(.75);
+
+        opacity:.8;
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.4);
+
+        opacity:0;
+    }
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title h1{
+
+    font-size:32px;
+
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.4);
+}
+
+.title h2{
+
+    margin-top:8px;
+
+    font-size:27px;
+
+    color:#ffb7d5;
+
+    text-shadow:
+        0 0 20px #ff3b8d;
+}
+
+.instruction{
+
+    margin-top:18px;
+
+    font-size:15px;
+
+    opacity:.75;
+
+    animation:
+        instructionPulse 2s ease-in-out infinite;
+}
+
+@keyframes instructionPulse{
+
+    0%,100%{
+        opacity:.4;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+/* =========================
+   PETALS
+========================= */
+
+#petals{
+    position:absolute;
+    inset:0;
+
+    z-index:50;
+
+    pointer-events:none;
+}
+
+.petal{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    font-size:25px;
+
+    animation:
+        flowerFall linear forwards;
+}
+
+@keyframes flowerFall{
+
+    0%{
+        transform:
+            translateY(-80px)
+            rotate(0deg)
+            scale(.5);
+
+        opacity:0;
+    }
+
+    12%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(115vh)
+            rotate(720deg)
+            scale(1.2);
+
+        opacity:0;
+    }
+}
+
+/* =========================
+   BOUQUET
+========================= */
+
+.bouquet{
+
+    position:absolute;
+
+    left:50%;
+    top:45%;
+
+    z-index:40;
+
+    text-align:center;
+
+    opacity:0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.15);
+
+    transition:
+        transform 1.6s cubic-bezier(.17,.89,.32,1.3),
+        opacity 1s ease;
+}
+
+.bouquet.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+/* =========================
+   ROSES
+========================= */
+
+.rose-group{
+
+    position:relative;
+
+    width:280px;
+    height:170px;
+
+    margin:auto;
+}
+
+.rose{
+
+    position:absolute;
+
+    width:62px;
+    height:62px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle at 35% 28%,
+        #ffd0dc 0%,
+        #ff688e 18%,
+        #ed164f 45%,
+        #9c0030 72%,
+        #4b0018 100%
+    );
+
+    box-shadow:
+
+        inset 5px 5px 12px
+        rgba(255,255,255,.25),
+
+        inset -10px -12px 18px
+        rgba(60,0,20,.5),
+
+        0 0 18px
+        rgba(255,40,100,.55);
+
+    animation:
+        roseFloat 2.4s ease-in-out infinite;
+}
+
+.rose::before,
+.rose::after{
+
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,190,210,.7),
+        rgba(190,0,50,.35)
+    );
+}
+
+.rose::before{
+
+    width:42px;
+    height:42px;
+
+    left:-5px;
+    top:12px;
+}
+
+.rose::after{
+
+    width:42px;
+    height:42px;
+
+    right:-5px;
+    top:9px;
+}
+
+.r1{left:108px;top:0;}
+.r2{left:58px;top:38px;animation-delay:.2s;}
+.r3{left:158px;top:38px;animation-delay:.4s;}
+.r4{left:20px;top:78px;animation-delay:.6s;}
+.r5{left:108px;top:70px;animation-delay:.8s;}
+.r6{left:196px;top:78px;animation-delay:1s;}
+.r7{left:65px;top:102px;animation-delay:1.2s;}
+.r8{left:150px;top:105px;animation-delay:1.4s;}
+
+@keyframes roseFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+/* =========================
+   LEAVES
+========================= */
+
+.leaves{
+
+    margin-top:-22px;
+
+    font-size:42px;
+
+    letter-spacing:-10px;
+}
+
+/* =========================
+   WRAPPER
+========================= */
+
+.wrapper{
+
+    width:190px;
+    height:78px;
+
+    margin:auto;
+
+    background:
+    linear-gradient(
+        120deg,
+        #20171c,
+        #80717a,
+        #292026
+    );
+
+    clip-path:
+    polygon(
+        8% 0,
+        92% 0,
+        100% 100%,
+        50% 68%,
+        0 100%
+    );
+
+    box-shadow:
+        0 20px 35px
+        rgba(0,0,0,.6);
+}
+
+/* =========================
+   RIBBON
+========================= */
+
+.ribbon{
+
+    width:100px;
+    height:48px;
+
+    margin:-20px auto 0;
+
+    position:relative;
+}
+
+.ribbon::before,
+.ribbon::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:45px;
+    height:32px;
+
+    border:
+        5px solid #e2b14c;
+
+    border-radius:50%;
+}
+
+.ribbon::before{
+
+    left:0;
+
+    transform:rotate(30deg);
+}
+
+.ribbon::after{
+
+    right:0;
+
+    transform:rotate(-30deg);
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.bouquet-message{
+
+    margin-top:12px;
+
+    font-size:17px;
+
+    text-shadow:
+        0 0 18px #ff3d8e;
+}
+
+/* =========================
+   CONTINUE
+========================= */
+
+.continue{
+
+    margin-top:20px;
+
+    padding:14px 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    border-radius:50px;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.1);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 0 28px
+        rgba(255,50,140,.5);
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    pointer-events:none;
+
+    transition:.8s ease;
+}
+
+.continue.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    pointer-events:auto;
+}
+
+.continue:active{
+    transform:scale(.94);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+    .heart-zone{
+        transform:scale(.86);
+    }
+
+    .title h1{
+        font-size:28px;
+    }
+
+    .title h2{
+        font-size:24px;
+    }
+
+    .bouquet.show{
+        transform:
+            translate(-50%,-50%)
+            scale(.86);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="opening" id="opening">
+
+    <div class="stars" id="stars"></div>
+
+    <div id="petals"></div>
+
+    <div class="content" id="content">
+
+        <div
+            class="heart-zone"
+            id="heartZone"
+            onclick="touchHeart()"
+        >
+
+            <div class="heart-glow"></div>
+
+            <div class="heart">
+
+                <div class="heart-shine"></div>
+
+            </div>
+
+            <div class="arrow">
+                🏹
+            </div>
+
+            <div class="touch-ring"></div>
+
+        </div>
+
+        <div class="title">
+
+            <h1>
+                Happy Birthday
+            </h1>
+
+            <h2>
+                Sai Dharshini ❤️
+            </h2>
+
+            <div class="instruction">
+                👆 Touch the heart
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         GRAND ROSE BOUQUET
+    ====================== -->
+
+    <div
+        class="bouquet"
+        id="bouquet"
+    >
+
+        <div class="rose-group">
+
+            <div class="rose r1"></div>
+            <div class="rose r2"></div>
+            <div class="rose r3"></div>
+            <div class="rose r4"></div>
+            <div class="rose r5"></div>
+            <div class="rose r6"></div>
+            <div class="rose r7"></div>
+            <div class="rose r8"></div>
+
+        </div>
+
+        <div class="leaves">
+            🌿🌿🌿
+        </div>
+
+        <div class="wrapper"></div>
+
+        <div class="ribbon"></div>
+
+        <div class="bouquet-message">
+            A special bouquet, just for you 🌹
+        </div>
+
+        <button
+            class="continue"
+            id="continueButton"
+            onclick="nextScene()"
+        >
+            CONTINUE ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   CREATE STARS
+========================= */
+
+const stars =
+document.getElementById("stars");
+
+for(let i=0;i<55;i++){
+
+    const star =
+    document.createElement("div");
+
+    star.className="star";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.animationDuration =
+        (4+Math.random()*6)+"s";
+
+    star.style.animationDelay =
+        Math.random()*5+"s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   HEART TOUCH
+========================= */
+
+function touchHeart(){
+
+    const heartZone =
+        document.getElementById("heartZone");
+
+    const content =
+        document.getElementById("content");
+
+    const bouquet =
+        document.getElementById("bouquet");
+
+    const button =
+        document.getElementById("continueButton");
+
+    heartZone.style.pointerEvents="none";
+
+    heartZone.style.transform="scale(1.8)";
+
+    heartZone.style.opacity="0";
+
+    createHeartBurst();
+
+    createFlowerShower();
+
+    setTimeout(()=>{
+
+        content.style.opacity="0";
+
+    },300);
+
+    setTimeout(()=>{
+
+        bouquet.classList.add("show");
+
+    },1200);
+
+    setTimeout(()=>{
+
+        button.classList.add("show");
+
+    },2700);
+}
+
+
+/* =========================
+   HEART BURST
+========================= */
+
+function createHeartBurst(){
+
+    const container =
+        document.getElementById("petals");
+
+    const items=[
+        "🌹",
+        "🌸",
+        "🌺",
+        "🌷",
+        "💗",
+        "✨"
+    ];
+
+    for(let i=0;i<45;i++){
+
+        const item =
+            document.createElement("div");
+
+        item.className="petal";
+
+        item.innerHTML =
+            items[
+                Math.floor(
+                    Math.random()*items.length
+                )
+            ];
+
+        item.style.left="50%";
+        item.style.top="45%";
+
+        const x =
+            (Math.random()-.5)*600;
+
+        const y =
+            (Math.random()-.5)*600;
+
+        item.style.setProperty(
+            "--x",
+            x+"px"
+        );
+
+        item.style.setProperty(
+            "--y",
+            y+"px"
+        );
+
+        item.style.animation =
+            "burst 1.3s ease-out forwards";
+
+        container.appendChild(item);
+
+        setTimeout(()=>{
+            item.remove();
+        },1400);
+    }
+}
+
+
+/* =========================
+   FLOWER SHOWER
+========================= */
+
+function createFlowerShower(){
+
+    const container =
+        document.getElementById("petals");
+
+    const flowers=[
+        "🌹",
+        "🌸",
+        "🌺",
+        "🌷",
+        "💗"
+    ];
+
+    for(let i=0;i<90;i++){
+
+        setTimeout(()=>{
+
+            const flower =
+                document.createElement("div");
+
+            flower.className="petal";
+
+            flower.innerHTML =
+                flowers[
+                    Math.floor(
+                        Math.random()*flowers.length
+                    )
+                ];
+
+            flower.style.left =
+                Math.random()*100+"%";
+
+            flower.style.fontSize =
+                (18+Math.random()*22)+"px";
+
+            flower.style.animationDuration =
+                (3+Math.random()*5)+"s";
+
+            container.appendChild(flower);
+
+            setTimeout(()=>{
+                flower.remove();
+            },8500);
+
+        },i*45);
+    }
+}
+
+
+/* =========================
+   NEXT SCENE
+========================= */
+
+function nextScene(){
+
+    const opening =
+        document.getElementById("opening");
+
+    opening.style.opacity="0";
+
+    opening.style.transform="scale(1.05)";
+
+    /*
+       PART 2 — PREMIUM MAIL
+       WILL BE ADDED NEXT
+    */
+
+}
+
+</script>
+
+
+<style>
+
+/* =========================
+   HEART BURST ANIMATION
+========================= */
+
+@keyframes burst{
+
+    from{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+            translate(var(--x),var(--y))
+            scale(.15);
+
+        opacity:0;
+    }
+}
+
+</style>
+
+</body>
+</html>
