@@ -225,7 +225,7 @@ body{
 }
 
 /* =========================
-   PREMIUM HEART
+   NEW PREMIUM HEART ❤️
 ========================= */
 
 .heart{
@@ -235,47 +235,50 @@ body{
     left:50%;
     top:52%;
 
-    width:135px;
-    height:135px;
+    width:125px;
+    height:125px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb6cc 0%,
+            #ff6b96 25%,
+            #f51d5b 55%,
+            #a90038 100%
+        );
 
     transform:
         translate(-50%,-50%)
         rotate(-45deg);
 
-    border-radius:24px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #ffb8c9 0%,
-        #ff5b86 18%,
-        #f31555 45%,
-        #bd003b 70%,
-        #64001f 100%
-    );
+    border-radius:
+        18px 0 18px 18px;
 
     box-shadow:
 
-        inset 10px 10px 20px
-        rgba(255,255,255,.28),
+        inset 8px 8px 15px
+        rgba(255,255,255,.38),
 
-        inset -15px -20px 25px
-        rgba(65,0,25,.5),
+        inset -12px -14px 18px
+        rgba(80,0,30,.45),
 
-        0 15px 25px
+        0 10px 25px
         rgba(0,0,0,.45),
 
-        0 0 30px
-        rgba(255,30,100,.9),
+        0 0 25px
+        rgba(255,40,110,.9),
 
-        0 0 70px
-        rgba(255,30,100,.45);
+        0 0 65px
+        rgba(255,40,110,.5);
 
     animation:
-        heartFloat 3s ease-in-out infinite;
+        premiumHeartbeat 2.2s ease-in-out infinite;
 
-    transform-style:preserve-3d;
+    z-index:5;
 }
+
+
+/* Heart top curves */
 
 .heart::before,
 .heart::after{
@@ -284,40 +287,90 @@ body{
 
     position:absolute;
 
-    width:135px;
-    height:135px;
+    width:125px;
+    height:125px;
 
     border-radius:50%;
 
     background:
-    linear-gradient(
-        145deg,
-        #ffb8c9 0%,
-        #ff5b86 20%,
-        #f31555 48%,
-        #bd003b 75%,
-        #64001f 100%
-    );
+        linear-gradient(
+            135deg,
+            #ffb6cc 0%,
+            #ff6b96 25%,
+            #f51d5b 55%,
+            #a90038 100%
+        );
 
     box-shadow:
+        inset 7px 7px 14px
+        rgba(255,255,255,.25),
 
-        inset 8px 8px 16px
-        rgba(255,255,255,.2),
-
-        inset -12px -15px 22px
-        rgba(65,0,25,.4);
+        inset -10px -12px 16px
+        rgba(80,0,30,.35);
 }
 
 .heart::before{
-    top:-67px;
+
+    top:-62px;
     left:0;
 }
 
 .heart::after{
+
     top:0;
-    left:67px;
+    left:62px;
 }
 
+
+/* ❤️ Soft heartbeat */
+
+@keyframes premiumHeartbeat{
+
+    0%,100%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+
+    15%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1.08);
+
+    }
+
+    30%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+
+    45%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1.05);
+
+    }
+
+    60%,100%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1);
+
+    }
+}
 @keyframes heartFloat{
 
     0%,100%{
