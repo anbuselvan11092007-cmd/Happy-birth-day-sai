@@ -2181,17 +2181,24 @@ function openLetter(){
         height:185px;
     }
 
-    /* OPEN PAPER */
-    .envelope-wrap.open .letter-paper{
+    
+/* OPEN PAPER — FULL LETTER */
+.envelope-wrap.open .letter-paper{
 
-        height:520px;
+    width:340px;
+    height:520px;
 
-        transform:
-            translateY(-300px);
+    left:0;
+    right:auto;
 
-        overflow:hidden;
-    }
+    transform:
+        translateX(0)
+        translateY(-300px);
 
+    overflow:hidden;
+
+    z-index:7;
+}
     /* LETTER CONTENT */
     .paper-content{
 
@@ -2241,6 +2248,132 @@ function openLetter(){
         font-size:12px;
     }
 
+/* =====================================
+   FINAL MOBILE LETTER FIX
+===================================== */
+
+@media(max-width:480px){
+
+    /* Letter scene */
+    .letter-scene{
+        overflow:hidden;
+        justify-content:flex-start;
+        padding-top:95px;
+    }
+
+    /* Title */
+    .letter-title{
+        margin-bottom:25px;
+        z-index:20;
+    }
+
+    .letter-title span{
+        font-size:11px;
+    }
+
+    .letter-title h2{
+        font-size:21px;
+    }
+
+    /* Envelope container */
+    .envelope-wrap{
+        width:360px;
+        height:520px;
+        display:flex;
+        justify-content:center;
+        align-items:flex-start;
+    }
+
+    /* Envelope */
+    .envelope{
+        width:340px;
+        height:215px;
+        margin-top:10px;
+    }
+
+    /* Closed paper */
+    .letter-paper{
+
+        width:312px;
+
+        left:14px;
+        right:auto;
+
+        bottom:12px;
+
+        height:185px;
+
+        overflow:hidden;
+    }
+
+    /* =================================
+       OPEN LETTER
+       ================================= */
+
+    .envelope-wrap.open .letter-paper{
+
+    width:312px;
+
+    height:560px;
+
+    left:14px;
+    right:auto;
+
+    transform:translateY(-300px);
+
+    overflow:hidden;
+
+    z-index:7;
+}
+
+    /* =================================
+       LETTER CONTENT
+       ================================= */
+
+    .paper-content{
+
+        width:100%;
+
+        padding:24px 22px 30px;
+
+        font-size:13px;
+
+        line-height:1.55;
+
+        text-align:left;
+    }
+
+    .paper-content h2{
+        font-size:21px;
+        margin-bottom:12px;
+    }
+
+    .paper-content p{
+        margin-bottom:12px;
+    }
+
+    .paper-top{
+        font-size:10px;
+        margin-bottom:16px;
+    }
+
+    .signature{
+        margin-top:18px;
+        font-size:13px;
+    }
+
+    /* =================================
+       KEEP ENVELOPE CENTERED
+       ================================= */
+
+    .envelope-wrap.open{
+        justify-content:center;
+    }
+
+    /* Continue button */
+    .letter-continue{
+        margin-top:20px;
+    }
 }
 </style>
 
