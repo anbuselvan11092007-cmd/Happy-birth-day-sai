@@ -2144,43 +2144,101 @@ function openLetter(){
 
 
 /* =========================
-   MOBILE LETTER
+   MOBILE LETTER — PREMIUM
 ========================= */
 
 @media(max-width:480px){
 
     .letter-title{
-        margin-bottom:20px;
+        margin-bottom:18px;
+    }
+
+    .letter-title span{
+        font-size:11px;
     }
 
     .letter-title h2{
-        font-size:20px;
+        font-size:21px;
+    }
+
+    /* BIGGER ENVELOPE */
+    .envelope-wrap{
+        width:350px;
+        height:285px;
     }
 
     .envelope{
-        width:275px;
-        height:175px;
+        width:330px;
+        height:210px;
+        margin-top:25px;
     }
 
-    .envelope-wrap{
-        width:300px;
-    }
-
+    /* CLOSED PAPER */
     .letter-paper{
-        left:15px;
-        right:15px;
-        height:150px;
+        left:16px;
+        right:16px;
+        bottom:12px;
+        height:185px;
     }
 
+    /* OPEN PAPER */
     .envelope-wrap.open .letter-paper{
-        height:360px;
-        transform:translateY(-135px);
+
+        height:520px;
+
+        transform:
+            translateY(-300px);
+
+        overflow:hidden;
     }
 
+    /* LETTER CONTENT */
     .paper-content{
-        padding:20px 18px;
-        font-size:11px;
-        line-height:1.5;
+
+        padding:24px 24px 30px;
+
+        font-size:13px;
+
+        line-height:1.6;
+
+        text-align:left;
+    }
+
+    .paper-top{
+        font-size:10px;
+        margin-bottom:18px;
+    }
+
+    .paper-content h2{
+        font-size:20px;
+        margin-bottom:12px;
+    }
+
+    .paper-content p{
+        margin-bottom:13px;
+    }
+
+    .signature{
+        margin-top:18px;
+        font-size:13px;
+    }
+
+    /* FLAP */
+    .envelope-flap{
+        height:125px;
+    }
+
+    /* SEAL */
+    .wax-seal{
+        width:52px;
+        height:52px;
+        top:78px;
+    }
+
+    /* HINT */
+    .open-hint{
+        bottom:-8px;
+        font-size:12px;
     }
 
 }
