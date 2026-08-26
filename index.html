@@ -1045,6 +1045,45 @@ body{
 
                 <div class="paper-content">
 
+    <div class="paper-top reveal-item">
+        <span>✨ A Special Message ✨</span>
+    </div>
+
+    <h2 class="reveal-item">
+        Dear Sai,
+    </h2>
+
+    <p class="reveal-item">
+        Happy Birthday, my dear friend!
+    </p>
+
+    <p class="reveal-item">
+        I made this special little website
+        just for you, Sai. It's just a small
+        thing I wanted to do for my dear friend.
+        I hope you enjoy every little surprise
+        in it.
+    </p>
+
+    <p class="reveal-item">
+        There are many more gifts waiting for you,
+        Sai. They'll come to you at the right time,
+        one by one.
+    </p>
+
+    <p class="reveal-item">
+        Thinking about you and making this for you
+        has made me really happy, Sai. I hope this
+        little surprise brings a beautiful smile
+        to your face. ❤️
+    </p>
+
+    <div class="signature reveal-item">
+        With lots of love ❤️
+    </div>
+
+</div>
+
                     <div class="paper-top">
                         <span>✨ A Special Message ✨</span>
                     </div>
@@ -1337,13 +1376,40 @@ function openLetter(){
     const button =
         document.getElementById("letterContinue");
 
+    /* Open envelope */
+
     envelope.classList.add("open");
+
+
+    /* Letter starts revealing */
+
+    setTimeout(()=>{
+
+        const items =
+            document.querySelectorAll(
+                ".reveal-item"
+            );
+
+        items.forEach((item,index)=>{
+
+            setTimeout(()=>{
+
+                item.classList.add("revealed");
+
+            }, index * 650);
+
+        });
+
+    },1500);
+
+
+    /* Continue button appears */
 
     setTimeout(()=>{
 
         button.classList.add("show");
 
-    },1800);
+    },6500);
 }
 </script>
 
@@ -1509,7 +1575,7 @@ function openLetter(){
 
 
 /* =========================
-   ENVELOPE
+   LUXURY GOLD & IVORY ENVELOPE
 ========================= */
 
 .envelope-wrap{
@@ -1536,15 +1602,17 @@ function openLetter(){
 
     margin-top:25px;
 
-    perspective:1000px;
+    perspective:1200px;
 
     filter:
-        drop-shadow(0 25px 30px rgba(0,0,0,.6))
-        drop-shadow(0 0 25px rgba(255,60,130,.25));
+        drop-shadow(0 25px 35px rgba(0,0,0,.65))
+        drop-shadow(0 0 30px rgba(255,210,90,.25));
 }
 
 
-/* Envelope back */
+/* =========================
+   GOLD ENVELOPE BACK
+========================= */
 
 .envelope-back{
 
@@ -1552,23 +1620,37 @@ function openLetter(){
 
     inset:0;
 
-    border-radius:8px;
+    border-radius:10px;
 
     background:
         linear-gradient(
-            145deg,
-            #ff8eae,
-            #d92961 45%,
-            #75002d
+            135deg,
+            #fffdf5 0%,
+            #f7e7b0 18%,
+            #c99a35 48%,
+            #f8e9b3 72%,
+            #b98524 100%
         );
 
+    border:
+        1px solid rgba(255,230,150,.9);
+
     box-shadow:
-        inset 0 8px 15px rgba(255,255,255,.2),
-        inset 0 -15px 20px rgba(60,0,25,.35);
+
+        inset 0 2px 4px
+        rgba(255,255,255,.8),
+
+        inset 0 -12px 20px
+        rgba(100,60,0,.25),
+
+        0 0 18px
+        rgba(255,210,90,.25);
 }
 
 
-/* Letter paper */
+/* =========================
+   IVORY LETTER PAPER
+========================= */
 
 .letter-paper{
 
@@ -1586,13 +1668,14 @@ function openLetter(){
     background:
         linear-gradient(
             135deg,
-            #fffaf5,
-            #ffeef4
+            #fffefa,
+            #fff8e9 45%,
+            #fffdf7
         );
 
-    border-radius:5px;
+    border-radius:6px;
 
-    color:#491326;
+    color:#4b3517;
 
     z-index:2;
 
@@ -1600,17 +1683,49 @@ function openLetter(){
         translateY(0);
 
     transition:
-        transform 1.3s cubic-bezier(.17,.89,.32,1.25),
-        height 1.3s ease;
+        transform 1.5s cubic-bezier(.17,.89,.32,1.25),
+        height 1.5s ease;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.25);
+
+        0 10px 25px
+        rgba(0,0,0,.3),
+
+        inset 0 0 0 1px
+        rgba(201,154,53,.25);
 }
 
 
-/* Letter writing */
+/* =========================
+   GOLD PAPER BORDER
+========================= */
+
+.letter-paper::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:1px solid
+        rgba(196,145,38,.45);
+
+    border-radius:4px;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   LETTER WRITING
+========================= */
 
 .paper-content{
+
+    position:relative;
+
+    z-index:2;
 
     padding:22px 22px 25px;
 
@@ -1633,7 +1748,7 @@ function openLetter(){
 
     letter-spacing:2px;
 
-    color:#bd4168;
+    color:#a77920;
 
     margin-bottom:15px;
 }
@@ -1644,7 +1759,7 @@ function openLetter(){
 
     margin-bottom:10px;
 
-    color:#8c1743;
+    color:#76520e;
 }
 
 .paper-content p{
@@ -1660,12 +1775,12 @@ function openLetter(){
 
     font-style:italic;
 
-    color:#a52b57;
+    color:#9b6d17;
 }
 
 
 /* =========================
-   ENVELOPE FRONT
+   GOLD FRONT FOLD
 ========================= */
 
 .envelope-front{
@@ -1683,8 +1798,10 @@ function openLetter(){
     background:
         linear-gradient(
             145deg,
-            #f85b89,
-            #b90043
+            #fff6d5,
+            #e2b84e 42%,
+            #b9821e 75%,
+            #f3d77f
         );
 
     clip-path:
@@ -1695,11 +1812,19 @@ function openLetter(){
             100% 100%,
             0 100%
         );
+
+    border-top:
+        1px solid
+        rgba(255,240,180,.8);
+
+    box-shadow:
+        inset 0 8px 15px
+        rgba(255,255,255,.35);
 }
 
 
 /* =========================
-   ENVELOPE FLAP
+   GOLD FLAP
 ========================= */
 
 .envelope-flap{
@@ -1717,9 +1842,10 @@ function openLetter(){
     background:
         linear-gradient(
             145deg,
-            #ff9fba,
-            #d62b64 55%,
-            #8c0033
+            #fffdf0 0%,
+            #f2d57c 28%,
+            #c3932e 58%,
+            #f8e5a3 100%
         );
 
     clip-path:
@@ -1732,12 +1858,16 @@ function openLetter(){
     transform-origin:top center;
 
     transition:
-        transform 1.1s cubic-bezier(.17,.89,.32,1.25);
+        transform 1.2s cubic-bezier(.17,.89,.32,1.25);
+
+    box-shadow:
+        0 5px 15px
+        rgba(100,65,0,.2);
 }
 
 
 /* =========================
-   WAX SEAL
+   GOLD WAX SEAL
 ========================= */
 
 .wax-seal{
@@ -1750,8 +1880,8 @@ function openLetter(){
     transform:
         translateX(-50%);
 
-    width:48px;
-    height:48px;
+    width:50px;
+    height:50px;
 
     z-index:8;
 
@@ -1764,17 +1894,30 @@ function openLetter(){
 
     background:
         radial-gradient(
-            circle at 35% 30%,
-            #ff799f,
-            #c90043 55%,
-            #65001f
+            circle at 35% 28%,
+            #fff3b0 0%,
+            #e0b84f 28%,
+            #a96f12 58%,
+            #704500 100%
         );
 
+    border:
+        2px solid
+        #f8df8a;
+
     box-shadow:
-        inset 4px 4px 8px rgba(255,255,255,.25),
-        inset -5px -6px 10px rgba(60,0,20,.45),
-        0 5px 12px rgba(0,0,0,.45),
-        0 0 20px rgba(255,50,110,.45);
+
+        inset 4px 4px 8px
+        rgba(255,255,255,.55),
+
+        inset -5px -6px 10px
+        rgba(70,40,0,.4),
+
+        0 5px 12px
+        rgba(0,0,0,.45),
+
+        0 0 25px
+        rgba(255,210,80,.55);
 
     font-size:21px;
 
@@ -1811,6 +1954,79 @@ function openLetter(){
         translateY(-145px);
 
     z-index:7;
+}
+
+
+/* =========================
+   LETTER REVEAL
+========================= */
+
+.reveal-item{
+
+    opacity:0;
+
+    transform:
+        translateY(12px);
+
+    filter:blur(4px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        filter .8s ease;
+}
+
+.reveal-item.revealed{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+    filter:blur(0);
+}
+
+
+/* =========================
+   LUXURY SHINE
+========================= */
+
+.envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:10px;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 25%,
+            rgba(255,255,255,.45) 45%,
+            transparent 65%
+        );
+
+    transform:
+        translateX(-120%);
+
+    animation:
+        envelopeShine 4s ease-in-out infinite;
+}
+
+@keyframes envelopeShine{
+
+    0%,45%{
+        transform:translateX(-120%);
+    }
+
+    70%,100%{
+        transform:translateX(120%);
+    }
 }
 
 
