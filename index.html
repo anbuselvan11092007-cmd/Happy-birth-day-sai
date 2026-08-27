@@ -1389,16 +1389,147 @@ function openPremiumLetter(){
 
 let balloonsRemaining = 12;
 let balloonGameStarted = false;
+
 /* =====================================
-   BALLOON POP SOUND
+   PREMIUM BALLOON POP SOUND
+   MOBILE SAFE — WEB AUDIO
 ===================================== */
 
-const popSound = new Audio(
-    "https://www.soundjay.com/misc/sounds/balloon-pop-01.mp3"
-);
+let audioCtx = null;
 
-popSound.volume = 0.65;
+function initAudio(){
 
+    if(!audioCtx){
+
+        audioCtx = new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+    }
+
+    if(audioCtx.state === "suspended"){
+        audioCtx.resume();
+    }
+}
+
+
+function playPopSound(){
+
+    initAudio();
+
+    const now = audioCtx.currentTime;
+
+    /* Short noise burst */
+    const bufferSize =
+        audioCtx.sampleRate * 0.12;
+
+    const buffer =
+        audioCtx.createBuffer(
+            1,
+            bufferSize,
+            audioCtx.sampleRate
+        );
+
+    const data =
+        buffer.getChannelData(0);
+
+    for(let i = 0; i < bufferSize; i++){
+
+        data[i] =
+            (Math.random() * 2 - 1) *
+            Math.pow(1 - i / bufferSize, 2);
+    }
+
+    const noise =
+        audioCtx.createBufferSource();
+
+    noise.buffer = buffer;
+
+
+    /* Filter */
+    const filter =
+        audioCtx.createBiquadFilter();
+
+    filter.type = "highpass";
+    filter.frequency.setValueAtTime(
+        900,
+        now
+    );
+
+
+    /* Volume */
+    const gain =
+        audioCtx.createGain();
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        now
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.75,
+        now + 0.008
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + 0.12
+    );
+
+
+    noise
+        .connect(filter)
+        .connect(gain)
+        .connect(audioCtx.destination);
+
+
+    noise.start(now);
+    noise.stop(now + 0.13);
+
+
+    /* Extra tiny "POP" tone */
+
+    const oscillator =
+        audioCtx.createOscillator();
+
+    const oscGain =
+        audioCtx.createGain();
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        180,
+        now
+    );
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        70,
+        now + 0.08
+    );
+
+    oscGain.gain.setValueAtTime(
+        0.0001,
+        now
+    );
+
+    oscGain.gain.exponentialRampToValueAtTime(
+        0.35,
+        now + 0.005
+    );
+
+    oscGain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + 0.09
+    );
+
+    oscillator
+        .connect(oscGain)
+        .connect(audioCtx.destination);
+
+    oscillator.start(now);
+    oscillator.stop(now + 0.1);
+}
 /* =====================================
    START BALLOON GAME
 ===================================== */
@@ -1525,24 +1656,16 @@ function createGameBalloons(){
 
 
             balloon.addEventListener(
-                "click",
-                ()=>{
-                    popBalloon(balloon);
-                }
-            );
+    "pointerdown",
+    function(e){
 
+        e.preventDefault();
 
-            balloon.addEventListener(
-                "touchstart",
-                function(e){
+        popBalloon(balloon);
 
-                    e.preventDefault();
-
-                    popBalloon(balloon);
-
-                },
-                {passive:false}
-            );
+    },
+    {passive:false}
+);
 
 
             balloonArea.appendChild(balloon);
@@ -1569,8 +1692,7 @@ function popBalloon(balloon){
 
     balloon.classList.add("popping");
 
-popSound.currentTime = 0;
-popSound.play().catch(()=>{});
+playPopSound();
     createPopParticles(balloon);
 
 
