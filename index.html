@@ -2270,6 +2270,23 @@ function openBirthdayGreetings(){
 
     },1000);
 }
+    /* =====================================
+   SHOW MAIN BIRTHDAY GREETINGS
+===================================== */
+
+function showBirthdayGreetings(){
+
+    const greeting =
+        document.getElementById("birthdayGreetings");
+
+    if(!greeting){
+        console.log("Birthday greetings section missing");
+        return;
+    }
+
+    greeting.classList.add("active");
+
+}
 /* =====================================
    KEY SPARKLES
 ===================================== */
@@ -5308,6 +5325,347 @@ function createKeySparkles(){
         padding:10px 28px;
     }
 }
+    /* =====================================
+   MAIN BIRTHDAY GREETINGS
+===================================== */
+
+.birthday-greetings{
+    position:fixed;
+    inset:0;
+
+    z-index:900;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #721438 0%,
+            #35091f 42%,
+            #100009 75%,
+            #030002 100%
+        );
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:scale(.96);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s ease;
+
+    overflow:hidden;
+}
+
+.birthday-greetings.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+/* Soft background glow */
+
+.birthday-greetings::before{
+    content:"";
+
+    position:absolute;
+
+    width:380px;
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,55,130,.28),
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    animation:greetingGlow 4s ease-in-out infinite;
+}
+
+@keyframes greetingGlow{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+/* Greeting Card */
+
+.greeting-card{
+    position:relative;
+
+    z-index:2;
+
+    width:min(520px,100%);
+
+    max-height:90vh;
+
+    padding:30px 25px;
+
+    border:
+        1px solid
+        rgba(255,210,225,.28);
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 0 35px rgba(255,40,120,.25),
+        inset 0 0 25px rgba(255,255,255,.04);
+
+    overflow-y:auto;
+
+    text-align:center;
+
+    animation:
+        greetingCardIn 1.2s
+        cubic-bezier(.17,.89,.32,1.25)
+        .3s both;
+}
+
+@keyframes greetingCardIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(45px)
+            scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* Heading */
+
+.greeting-card h1{
+
+    font-size:28px;
+
+    color:#fff;
+
+    margin-bottom:22px;
+
+    text-shadow:
+        0 0 12px #ff4d91,
+        0 0 28px rgba(255,60,140,.65);
+
+    animation:
+        greetingTitleIn 1s ease
+        .8s both;
+}
+
+@keyframes greetingTitleIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Sparkle */
+
+.greeting-sparkle{
+
+    font-size:25px;
+
+    margin-bottom:8px;
+
+    animation:
+        sparkleFloat 2s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-6px) rotate(8deg);
+    }
+}
+
+/* Message */
+
+.greeting-message{
+
+    text-align:left;
+
+    line-height:1.75;
+
+    font-size:15px;
+
+    color:#ffe8f1;
+}
+
+.greeting-message p{
+
+    margin-bottom:18px;
+
+    opacity:0;
+
+    transform:translateY(18px);
+
+    animation:
+        messageReveal .8s ease forwards;
+}
+
+.greeting-message p:nth-child(1){
+    animation-delay:1.3s;
+}
+
+.greeting-message p:nth-child(2){
+    animation-delay:2s;
+}
+
+.greeting-message p:nth-child(3){
+    animation-delay:2.7s;
+}
+
+.greeting-message p:nth-child(4){
+    animation-delay:3.4s;
+}
+
+@keyframes messageReveal{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Final Birthday Line */
+
+.greeting-message h2{
+
+    text-align:center;
+
+    font-size:18px;
+
+    line-height:1.5;
+
+    color:#ffd1e2;
+
+    margin-top:10px;
+
+    text-shadow:
+        0 0 12px #ff3f91;
+
+    opacity:0;
+
+    transform:scale(.9);
+
+    animation:
+        finalWish 1s
+        ease forwards;
+
+    animation-delay:4.1s;
+}
+
+@keyframes finalWish{
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Signature */
+
+.greeting-sign{
+
+    margin-top:22px;
+
+    font-size:17px;
+
+    color:#fff;
+
+    text-align:right;
+
+    font-style:italic;
+
+    opacity:0;
+
+    animation:
+        signatureIn 1s ease
+        4.8s forwards;
+}
+
+@keyframes signatureIn{
+
+    to{
+        opacity:1;
+    }
+}
+
+/* Mobile */
+
+@media(max-width:480px){
+
+    .birthday-greetings{
+        padding:16px;
+    }
+
+    .greeting-card{
+        max-height:92vh;
+        padding:24px 18px;
+        border-radius:20px;
+    }
+
+    .greeting-card h1{
+        font-size:23px;
+        margin-bottom:18px;
+    }
+
+    .greeting-message{
+        font-size:13px;
+        line-height:1.7;
+    }
+
+    .greeting-message p{
+        margin-bottom:15px;
+    }
+
+    .greeting-message h2{
+        font-size:16px;
+    }
+
+    .greeting-sign{
+        font-size:15px;
+    }
+
+}
 </style>
 <!-- =========================
      BALLOON GAME
@@ -5603,6 +5961,57 @@ function createKeySparkles(){
     >
         CONTINUE ✨
     </button>
+
+</div>
+    <!-- =====================================
+     MAIN BIRTHDAY GREETINGS
+===================================== -->
+
+<div class="birthday-greetings" id="birthdayGreetings">
+
+    <div class="greeting-card">
+
+        <div class="greeting-sparkle">✨</div>
+
+        <h1>Happy birthday sai ,</h1>
+
+        <div class="greeting-message">
+
+            <p>
+                Intha naal unakku romba special aana naal sai.
+                Enakkum tha. Nee romba romba cute sai.
+                Unakku pudichavangala nee romba nalla pathupa.
+            </p>
+
+            <p>
+                Un yarachum romba hurt pannalum kuda vanga mela
+                nee kova padamata athukku bathila nee romba feel
+                pannuva sai. Eppayum apdi irukkatha ellarukudayum
+                jollya iru. Life one time tha varum athula
+                ellarukudayum happya irunthutu povom.
+            </p>
+
+            <p>
+                Unakku pudichavangala nee romba love pannuva sai.
+                Nee ellarukkume romba special aana person sai.
+                Eppayum thairiyama iru nalla padi.
+            </p>
+
+            <p>
+                And once again
+            </p>
+
+            <h2>
+                Many more happy returns of the day sai
+            </h2>
+
+            <div class="greeting-sign">
+                -yours ❤️
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 </div>
