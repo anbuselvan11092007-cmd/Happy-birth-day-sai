@@ -4915,6 +4915,124 @@ function createKeySparkles(){
     align-items: center;
     justify-content: flex-start;
 }
+/* =====================================
+   KEYS CONTINUE - LUXURY ANIMATION
+===================================== */
+
+.keys-continue{
+    position: relative;
+    margin-top: 24px;
+
+    padding: 14px 34px;
+
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #ffe6f2,
+        #ffffff
+    );
+
+    color: #8b3158;
+
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 25px rgba(255,150,200,0.45);
+
+    animation:
+        continueFloat 2s ease-in-out infinite,
+        continueGlow 2s ease-in-out infinite;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Soft glowing pulse */
+
+@keyframes continueGlow{
+
+    0%,100%{
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.8),
+            0 0 22px rgba(255,150,200,0.35);
+    }
+
+    50%{
+        box-shadow:
+            0 0 18px rgba(255,255,255,1),
+            0 0 38px rgba(255,150,200,0.7);
+    }
+}
+
+/* Gentle floating */
+
+@keyframes continueFloat{
+
+    0%,100%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-5px);
+    }
+}
+
+/* Touch / click */
+
+.keys-continue:active{
+    transform: scale(0.92);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 35px rgba(255,150,200,0.8);
+}
+
+/* Moving shine */
+
+.keys-continue::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-80%;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    animation:buttonShine 3s ease-in-out infinite;
+}
+
+@keyframes buttonShine{
+
+    0%{
+        left:-80%;
+    }
+
+    45%,100%{
+        left:130%;
+    }
+}
 </style>
 <!-- =========================
      BALLOON GAME
