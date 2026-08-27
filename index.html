@@ -2249,22 +2249,25 @@ function openLetter(){
     }
 
 /* =====================================
-   FINAL MOBILE LETTER FIX
+   FINAL MOBILE ENVELOPE FIX
 ===================================== */
 
 @media(max-width:480px){
 
-    /* Letter scene */
+    /* LETTER SCENE */
     .letter-scene{
-    overflow:hidden;
-    justify-content:flex-start;
-    padding-top:65px;
-}
+        overflow-y:auto;
+        overflow-x:hidden;
+        justify-content:flex-start;
+        padding-top:55px;
+        padding-bottom:35px;
+    }
 
-    /* Title */
+    /* TITLE */
     .letter-title{
         margin-bottom:25px;
         z-index:20;
+        flex-shrink:0;
     }
 
     .letter-title span{
@@ -2275,59 +2278,83 @@ function openLetter(){
         font-size:21px;
     }
 
-    /* Envelope container */
-    .envelope-wrap{
-    width:360px;
-    height:430px;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-}
-    /* Envelope */
-    .envelope{
-    width:340px;
-    height:215px;
-    margin-top:5px;
-}
 
-    /* Closed paper */
+    /* =================================
+       NORMAL ENVELOPE SIZE
+    ================================= */
+
+    .envelope-wrap{
+
+        width:100%;
+        max-width:360px;
+
+        height:auto;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        justify-content:flex-start;
+
+        flex-shrink:0;
+    }
+
+
+    .envelope{
+
+        width:320px;
+        height:205px;
+
+        margin-top:0;
+
+        flex-shrink:0;
+    }
+
+
+    /* =================================
+       CLOSED LETTER PAPER
+    ================================= */
+
     .letter-paper{
 
-        width:312px;
-
         left:14px;
-        right:auto;
+        right:14px;
 
-        bottom:12px;
+        bottom:10px;
 
-        height:185px;
+        width:auto;
+        height:170px;
 
         overflow:hidden;
     }
 
+
     /* =================================
-       OPEN LETTER
-       ================================= */
+       OPEN LETTER PAPER
+    ================================= */
 
     .envelope-wrap.open .letter-paper{
 
-    width:312px;
+        width:320px;
 
-    height:560px;
+        height:500px;
 
-    left:14px;
-    right:auto;
+        left:0;
+        right:auto;
 
-    transform:translateY(-300px);
+        transform:translateY(-275px);
 
-    overflow:hidden;
+        overflow:visible;
 
-    z-index:7;
-}
+        z-index:7;
+    }
+
 
     /* =================================
        LETTER CONTENT
-       ================================= */
+    ================================= */
 
     .paper-content{
 
@@ -2337,18 +2364,9 @@ function openLetter(){
 
         font-size:13px;
 
-        line-height:1.55;
+        line-height:1.6;
 
         text-align:left;
-    }
-
-    .paper-content h2{
-        font-size:21px;
-        margin-bottom:12px;
-    }
-
-    .paper-content p{
-        margin-bottom:12px;
     }
 
     .paper-top{
@@ -2356,23 +2374,80 @@ function openLetter(){
         margin-bottom:16px;
     }
 
+    .paper-content h2{
+        font-size:20px;
+        margin-bottom:12px;
+    }
+
+    .paper-content p{
+        margin-bottom:13px;
+    }
+
     .signature{
         margin-top:18px;
         font-size:13px;
     }
 
+
     /* =================================
-       KEEP ENVELOPE CENTERED
-       ================================= */
+       FLAP
+    ================================= */
 
-    .envelope-wrap.open{
-        justify-content:center;
+    .envelope-flap{
+        height:120px;
     }
 
-    /* Continue button */
+
+    /* =================================
+       WAX SEAL
+    ================================= */
+
+    .wax-seal{
+
+        width:52px;
+        height:52px;
+
+        top:75px;
+    }
+
+
+    /* =================================
+       TAP HINT
+    ================================= */
+
+    .open-hint{
+
+        position:relative;
+
+        bottom:auto;
+
+        margin-top:16px;
+
+        font-size:12px;
+
+        white-space:nowrap;
+    }
+
+
+    /* =================================
+       CONTINUE BUTTON
+    ================================= */
+
     .letter-continue{
-        margin-top:20px;
+
+        display:block;
+
+        position:relative;
+
+        width:auto;
+
+        margin:25px auto 0;
+
+        padding:14px 38px;
+
+        flex-shrink:0;
     }
+
 }
 </style>
 
