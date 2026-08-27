@@ -1933,7 +1933,13 @@ function openChest(number){
     setTimeout(()=>{
 
         chest.classList.add("opened");
+const instruction =
+    document.getElementById("chestInstruction");
 
+if(instruction){
+    instruction.style.opacity = "0";
+    instruction.style.visibility = "hidden";
+}
         openedChests++;
 
 
