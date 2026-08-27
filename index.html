@@ -1860,38 +1860,48 @@ function showKeys(){
 
 function continueToGifts(){
 
-    const balloonGame =
-        document.getElementById("balloonGame");
+    const balloonGame = document.getElementById("balloonGame");
+    const giftScene = document.getElementById("giftScene");
+    const giftIntro = document.getElementById("giftIntro");
+    const chestArea = document.getElementById("chestArea");
 
-    const giftScene =
-        document.getElementById("giftScene");
+    if (!balloonGame || !giftScene) {
+        console.log("Gift scene elements missing");
+        return;
+    }
 
+    // Balloon page fade out
+    balloonGame.style.transition = "opacity 0.9s ease, transform 0.9s ease";
     balloonGame.style.opacity = "0";
     balloonGame.style.transform = "scale(1.05)";
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
+        // Hide balloon game
         balloonGame.style.visibility = "hidden";
+        balloonGame.style.display = "none";
 
+        // Show gift scene
         giftScene.classList.add("active");
+        giftScene.style.visibility = "visible";
+        giftScene.style.opacity = "1";
+        giftScene.style.display = "flex";
 
-        setTimeout(()=>{
+        // Show intro
+        if (giftIntro) {
+            setTimeout(() => {
+                giftIntro.classList.add("show");
+            }, 300);
+        }
 
-            document
-                .getElementById("giftIntro")
-                .classList.add("show");
+        // Show chest
+        if (chestArea) {
+            setTimeout(() => {
+                chestArea.classList.add("show");
+            }, 2600);
+        }
 
-        },300);
-
-        setTimeout(()=>{
-
-            document
-                .getElementById("chestArea")
-                .classList.add("show");
-
-        },2600);
-
-    },900);
+    }, 900);
 }
 /* =====================================
    SECRET CHEST SYSTEM
@@ -4878,6 +4888,33 @@ function createKeySparkles(){
     }
 
 }
+/* =====================================
+   GIFT SCENE - FIX
+===================================== */
+
+.gift-scene{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+
+    z-index: 100;
+
+    overflow: hidden;
+}
+
+.gift-scene.active{
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
 </style>
 <!-- =========================
      BALLOON GAME
@@ -4943,7 +4980,8 @@ function createKeySparkles(){
 >
     CONTINUE ✨
 </button>
-    </div>
+</div>
+</div>
 <!-- =====================================
      SECRET GIFT CHEST SCENE
 ===================================== -->
