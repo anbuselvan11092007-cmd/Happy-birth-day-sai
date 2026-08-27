@@ -1382,8 +1382,9 @@ function openPremiumLetter(){
 
     },3200);
 }
+
 /* =====================================
-   PREMIUM BALLOON MINI GAME
+   PREMIUM BALLOON MINI GAME — FIXED
 ===================================== */
 
 let balloonsRemaining = 12;
@@ -1408,10 +1409,9 @@ function startBalloons(){
     const balloonsLeft =
         document.getElementById("balloonsLeft");
 
-    /* Hide letter scene */
+    /* Hide letter */
 
     letterScene.style.opacity = "0";
-
     letterScene.style.transform = "scale(1.05)";
 
     setTimeout(()=>{
@@ -1427,21 +1427,38 @@ function startBalloons(){
 
     balloonsRemaining = 12;
 
-    balloonsLeft.textContent =
-        balloonsRemaining;
+    balloonsLeft.textContent = balloonsRemaining;
 
     balloonArea.innerHTML = "";
 
     balloonGameStarted = true;
 
 
-    /* Start balloons after intro */
+    /* Hide keys from previous game */
+
+    document
+        .getElementById("keysResult")
+        .classList.remove("show");
+
+
+    /* Start balloon intro */
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("gameIntro")
+            .classList.add("hide");
+
+    },1800);
+
+
+    /* Create balloons */
 
     setTimeout(()=>{
 
         createGameBalloons();
 
-    },2800);
+    },2000);
 }
 
 
@@ -1469,10 +1486,8 @@ function createGameBalloons(){
 
             if(!balloonGameStarted) return;
 
-
             const balloon =
                 document.createElement("div");
-
 
             balloon.className =
                 "game-balloon " +
@@ -1483,13 +1498,9 @@ function createGameBalloons(){
                 ];
 
 
-            /* Random horizontal position */
-
             balloon.style.left =
-                (5 + Math.random()*90) + "%";
+                (5 + Math.random()*85) + "%";
 
-
-            /* Random size */
 
             const size =
                 58 + Math.random()*18;
@@ -1498,34 +1509,20 @@ function createGameBalloons(){
                 size + "px";
 
             balloon.style.height =
-                (size*1.2) + "px";
+                (size * 1.2) + "px";
 
-
-            /* Random animation speed */
 
             balloon.style.animationDuration =
-                (6 + Math.random()*3) + "s";
+                (7 + Math.random()*3) + "s";
 
-
-            /* Random delay inside animation */
-
-            balloon.style.animationDelay =
-                (Math.random()*.5) + "s";
-
-
-            /* Touch / click */
 
             balloon.addEventListener(
                 "click",
-                function(){
-
+                ()=>{
                     popBalloon(balloon);
-
                 }
             );
 
-
-            /* Mobile touch */
 
             balloon.addEventListener(
                 "touchstart",
@@ -1543,28 +1540,8 @@ function createGameBalloons(){
             balloonArea.appendChild(balloon);
 
 
-            /* Remove automatically if missed */
+        },i * 500);
 
-            setTimeout(()=>{
-
-                if(
-                    balloon &&
-                    balloon.parentNode &&
-                    !balloon.classList.contains("popping")
-                ){
-
-                    balloon.remove();
-
-                    balloonsRemaining--;
-
-                    updateBalloonCounter();
-
-                }
-
-            },10000);
-
-
-        },i*550);
     }
 }
 
@@ -1585,19 +1562,13 @@ function popBalloon(balloon){
     balloon.classList.add("popping");
 
 
-    /* Create sparkle burst */
-
     createPopParticles(balloon);
 
-
-    /* Update counter */
 
     balloonsRemaining--;
 
     updateBalloonCounter();
 
-
-    /* Remove balloon */
 
     setTimeout(()=>{
 
@@ -1606,9 +1577,10 @@ function popBalloon(balloon){
     },350);
 
 
-    /* Check completion */
-
     if(balloonsRemaining <= 0){
+
+        balloonGameStarted = false;
+
 
         setTimeout(()=>{
 
@@ -1657,10 +1629,10 @@ function createPopParticles(balloon){
 
 
     const centerX =
-        rect.left + rect.width/2;
+        rect.left + rect.width / 2;
 
     const centerY =
-        rect.top + rect.height/2;
+        rect.top + rect.height / 2;
 
 
     const particles = [
@@ -1671,7 +1643,7 @@ function createPopParticles(balloon){
     ];
 
 
-    for(let i=0;i<12;i++){
+    for(let i = 0; i < 12; i++){
 
         const particle =
             document.createElement("div");
@@ -1692,13 +1664,8 @@ function createPopParticles(balloon){
         particle.style.left =
             centerX + "px";
 
-
         particle.style.top =
             centerY + "px";
-
-
-        particle.style.fontSize =
-            (10 + Math.random()*12) + "px";
 
 
         const angle =
@@ -1751,26 +1718,83 @@ function showKeys(){
         );
 
 
-    /* Hide counter */
-
     counter.style.opacity = "0";
 
-
-    /* Stop game */
-
-    balloonGameStarted = false;
-
-
-    /* Show keys */
 
     keysResult.classList.add("show");
 
 
-    /* Extra golden sparkle */
-
     createKeySparkles();
 }
 
+
+/* =====================================
+   KEY SPARKLES
+===================================== */
+
+function createKeySparkles(){
+
+    const game =
+        document.getElementById(
+            "balloonGame"
+        );
+
+
+    for(let i = 0; i < 35; i++){
+
+        setTimeout(()=>{
+
+            const sparkle =
+                document.createElement("div");
+
+
+            sparkle.innerHTML =
+                Math.random() > .5
+                ? "✨"
+                : "⭐";
+
+
+            sparkle.style.position =
+                "absolute";
+
+
+            sparkle.style.left =
+                (20 + Math.random()*60) + "%";
+
+
+            sparkle.style.top =
+                (30 + Math.random()*40) + "%";
+
+
+            sparkle.style.fontSize =
+                (10 + Math.random()*16) + "px";
+
+
+            sparkle.style.pointerEvents =
+                "none";
+
+
+            sparkle.style.zIndex =
+                "120";
+
+
+            sparkle.style.animation =
+                "keySparkle 1.5s ease-out forwards";
+
+
+            game.appendChild(sparkle);
+
+
+            setTimeout(()=>{
+
+                sparkle.remove();
+
+            },1600);
+
+        },i * 70);
+
+    }
+}
 
 /* =====================================
    KEY SPARKLES
@@ -2807,32 +2831,347 @@ function createKeySparkles(){
     }
 }
 
-/* =========================
-   BALLOONS
-========================= */
+/* =====================================
+   BALLOON GAME
+===================================== */
 
-.balloon{
+.balloon-game{
 
     position:fixed;
+    inset:0;
 
-    bottom:-160px;
+    z-index:300;
 
-    z-index:200;
+    overflow:hidden;
 
-    font-size:65px;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #671536 0%,
+            #30091d 45%,
+            #080008 100%
+        );
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:scale(1.04);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.balloon-game.active{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:scale(1);
+}
+
+
+/* =====================================
+   INTRO
+===================================== */
+
+.game-intro{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 
     pointer-events:none;
 
-    animation:
-        balloonRise 5s linear forwards;
+    transition:
+        opacity .8s ease;
 }
+
+
+.game-intro.hide{
+
+    opacity:0;
+}
+
+
+.game-intro-text{
+
+    font-size:27px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 15px #ff4d91,
+        0 0 35px #ff2478;
+
+    animation:
+        gameTitlePulse 1.5s ease-in-out infinite;
+}
+
+
+.game-intro-sub{
+
+    margin-top:12px;
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+    opacity:.7;
+}
+
+
+@keyframes gameTitlePulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+}
+
+
+/* =====================================
+   COUNTER
+===================================== */
+
+.balloon-counter{
+
+    position:absolute;
+
+    top:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:100;
+
+    padding:10px 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    font-size:14px;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,50,140,.3);
+}
+
+
+.balloon-counter span{
+
+    font-weight:bold;
+
+    color:#ffb6d3;
+
+    font-size:18px;
+}
+
+
+/* =====================================
+   BALLOON AREA
+===================================== */
+
+.balloon-area{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:20;
+}
+
+
+/* =====================================
+   GAME BALLOON
+===================================== */
+
+.game-balloon{
+
+    position:absolute;
+
+    bottom:-150px;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    cursor:pointer;
+
+    z-index:30;
+
+    box-shadow:
+        inset -12px -15px 20px
+        rgba(0,0,0,.22),
+
+        inset 8px 8px 15px
+        rgba(255,255,255,.4),
+
+        0 0 22px
+        rgba(255,100,180,.5);
+
+    animation:
+        balloonRise
+        8s linear forwards;
+}
+
+
+/* Balloon knot */
+
+.game-balloon::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-9px;
+
+    transform:translateX(-50%);
+
+    width:10px;
+    height:12px;
+
+    background:inherit;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+}
+
+
+/* Balloon string */
+
+.game-balloon::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:100%;
+
+    width:1px;
+
+    height:80px;
+
+    background:
+        rgba(255,255,255,.5);
+}
+
+
+/* =====================================
+   BALLOON COLORS
+===================================== */
+
+.balloon-pink{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd4e4,
+            #ff4f91 35%,
+            #d50052 75%,
+            #75002e
+        );
+}
+
+
+.balloon-blue{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #d8f5ff,
+            #35b9ff 35%,
+            #0874d1 75%,
+            #003b78
+        );
+}
+
+
+.balloon-purple{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #f0d8ff,
+            #b75cff 35%,
+            #6c19bd 75%,
+            #32006c
+        );
+}
+
+
+.balloon-gold{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff5bd,
+            #ffd34e 35%,
+            #d49400 75%,
+            #714800
+        );
+}
+
+
+.balloon-green{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #d8ffe8,
+            #4edc8b 35%,
+            #15945a 75%,
+            #04552f
+        );
+}
+
+
+/* =====================================
+   BALLOON RISE
+===================================== */
 
 @keyframes balloonRise{
 
     0%{
+
         transform:
             translateY(0)
-            rotate(-8deg)
+            rotate(-6deg)
             scale(.7);
 
         opacity:0;
@@ -2843,20 +3182,242 @@ function createKeySparkles(){
     }
 
     50%{
+
         transform:
             translateY(-55vh)
-            rotate(8deg)
+            rotate(7deg)
             scale(1);
     }
 
     100%{
+
         transform:
             translateY(-125vh)
-            rotate(-8deg)
+            rotate(-6deg)
             scale(1.05);
+
+        opacity:.15;
+    }
+}
+
+
+/* =====================================
+   POPPING
+===================================== */
+
+.game-balloon.popping{
+
+    animation:
+        balloonPop .35s ease-out forwards !important;
+
+    pointer-events:none;
+}
+
+
+@keyframes balloonPop{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.35);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(0);
+        opacity:0;
+    }
+}
+
+
+/* =====================================
+   POP PARTICLES
+===================================== */
+
+.pop-particle{
+
+    position:absolute;
+
+    z-index:150;
+
+    pointer-events:none;
+
+    animation:
+        popParticle .8s ease-out forwards;
+}
+
+
+@keyframes popParticle{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            scale(.4);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+            translate(var(--px),var(--py))
+            scale(1.2);
 
         opacity:0;
     }
+}
+
+
+/* =====================================
+   KEYS RESULT
+===================================== */
+
+.keys-result{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:200;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    opacity:0;
+
+    transform:scale(.8);
+
+    pointer-events:none;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.keys-result.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+    pointer-events:auto;
+}
+
+
+.keys{
+
+    font-size:55px;
+
+    letter-spacing:8px;
+
+    margin-bottom:22px;
+
+    filter:
+        drop-shadow(
+            0 0 15px #ffd75e
+        );
+
+    animation:
+        keysGlow 1.5s ease-in-out infinite;
+}
+
+
+@keyframes keysGlow{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+
+.keys-result h2{
+
+    font-size:25px;
+
+    color:#ffe4a8;
+
+    text-shadow:
+        0 0 15px #ffbf3c,
+        0 0 35px #ff7b00;
+}
+
+
+.keys-result p{
+
+    margin-top:12px;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    opacity:.8;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:480px){
+
+    .game-intro-text{
+
+        font-size:22px;
+
+        letter-spacing:1px;
+    }
+
+    .game-intro-sub{
+
+        font-size:11px;
+
+        letter-spacing:2px;
+    }
+
+    .balloon-counter{
+
+        top:18px;
+
+        font-size:12px;
+
+        padding:9px 17px;
+    }
+
+    .keys{
+
+        font-size:45px;
+
+        letter-spacing:5px;
+    }
+
+    .keys-result h2{
+
+        font-size:21px;
+
+        padding:0 20px;
+    }
+
+    .keys-result p{
+
+        font-size:13px;
+    }
+
 }
 
 
@@ -3175,15 +3736,49 @@ function createKeySparkles(){
 <div class="balloon-game" id="balloonGame">
 
     <div class="game-intro" id="gameIntro">
+
         <div class="game-intro-text">
             BREAK THE BALLOONS 🎈
         </div>
+
+        <div class="game-intro-sub">
+            POP ALL 12 BALLOONS
+        </div>
+
     </div>
 
-    <div class="balloon-field" id="balloonField"></div>
 
-    <div class="keys-message" id="keysMessage">
-        <div class="keys">🔑 🔑 🔑</div>
+    <!-- BALLOON COUNTER -->
+
+    <div
+        class="balloon-counter"
+        id="balloonCounter"
+    >
+
+        🎈 BALLOONS LEFT:
+        <span id="balloonsLeft">12</span>
+
+    </div>
+
+
+    <!-- BALLOON AREA -->
+
+    <div
+        class="balloon-area"
+        id="balloonArea"
+    ></div>
+
+
+    <!-- 3 KEYS RESULT -->
+
+    <div
+        class="keys-result"
+        id="keysResult"
+    >
+
+        <div class="keys">
+            🔑 🔑 🔑
+        </div>
 
         <h2>
             NOW YOU HAVE 3 KEYS
@@ -3192,6 +3787,7 @@ function createKeySparkles(){
         <p>
             TO WIN GIFTS 🎁
         </p>
+
     </div>
 
 </div>
