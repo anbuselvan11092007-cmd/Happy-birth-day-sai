@@ -1389,7 +1389,15 @@ function openPremiumLetter(){
 
 let balloonsRemaining = 12;
 let balloonGameStarted = false;
+/* =====================================
+   BALLOON POP SOUND
+===================================== */
 
+const popSound = new Audio(
+    "https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+);
+
+popSound.volume = 0.45;
 
 /* =====================================
    START BALLOON GAME
@@ -1561,7 +1569,8 @@ function popBalloon(balloon){
 
     balloon.classList.add("popping");
 
-
+popSound.currentTime = 0;
+popSound.play().catch(()=>{});
     createPopParticles(balloon);
 
 
