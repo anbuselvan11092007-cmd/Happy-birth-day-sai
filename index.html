@@ -2141,6 +2141,10 @@ function selectGift(number){
         );
 
 
+    /* ================================
+       UNSELECT GIFT
+    ================================= */
+
     if(
         gift.classList.contains("selected")
     ){
@@ -2149,7 +2153,27 @@ function selectGift(number){
 
         selectedGifts--;
 
+        const oldTick =
+            gift.querySelector(".gift-selected-tick");
+
+        if(oldTick){
+
+            oldTick.classList.remove("show");
+
+            setTimeout(()=>{
+
+                oldTick.remove();
+
+            },300);
+        }
+
     }
+
+
+    /* ================================
+       SELECT GIFT
+    ================================= */
+
     else{
 
         if(selectedGifts >= 3){
@@ -2162,80 +2186,39 @@ function selectGift(number){
 
         selectedGifts++;
 
+
+        /* CREATE TICK */
+
+        const tick =
+            document.createElement("div");
+
+        tick.className =
+            "gift-selected-tick";
+
+        tick.innerHTML = "✓";
+
+        gift.appendChild(tick);
+
+
+        /* Small animation */
+
+        setTimeout(()=>{
+
+            tick.classList.add("show");
+
+        },50);
+
     }
 
+
+    /* ================================
+       UPDATE COUNT
+    ================================= */
 
     document
         .getElementById("selectedCount")
         .textContent =
         selectedGifts + " / 3 SELECTED";
-}
-/* =====================================
-   KEY SPARKLES
-===================================== */
-
-function createKeySparkles(){
-
-    const game =
-        document.getElementById(
-            "balloonGame"
-        );
-
-
-    for(let i = 0; i < 35; i++){
-
-        setTimeout(()=>{
-
-            const sparkle =
-                document.createElement("div");
-
-
-            sparkle.innerHTML =
-                Math.random() > .5
-                ? "✨"
-                : "⭐";
-
-
-            sparkle.style.position =
-                "absolute";
-
-
-            sparkle.style.left =
-                (20 + Math.random()*60) + "%";
-
-
-            sparkle.style.top =
-                (30 + Math.random()*40) + "%";
-
-
-            sparkle.style.fontSize =
-                (10 + Math.random()*16) + "px";
-
-
-            sparkle.style.pointerEvents =
-                "none";
-
-
-            sparkle.style.zIndex =
-                "120";
-
-
-            sparkle.style.animation =
-                "keySparkle 1.5s ease-out forwards";
-
-
-            game.appendChild(sparkle);
-
-
-            setTimeout(()=>{
-
-                sparkle.remove();
-
-            },1600);
-
-        },i * 70);
-
-    }
 }
 
 /* =====================================
@@ -5038,6 +5021,9 @@ function createKeySparkles(){
     45%,100%{
         left:130%;
     }
+}
+.gift-item{
+    position:relative;
 }
 </style>
 <!-- =========================
